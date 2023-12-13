@@ -4,7 +4,7 @@ model InvPendulum_001
   extends Modelica.Icons.Example;
   inner Modelica.Mechanics.MultiBody.World world(animateGravity = false, animateGround = false)  annotation(
     Placement(visible = true, transformation(origin = {-86, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(phi(displayUnit = "rad",fixed = true, start = -80), useAxisFlange = true)  annotation(
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(phi(displayUnit = "rad",fixed = true, start = 80*Modelica.Constants.pi/180), useAxisFlange = true)  annotation(
     Placement(visible = true, transformation(origin = {-12, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(angles_start = {0.5235987755982988, 0, 0}, length = bodyShape.r[1],m = 1, r = {0.6, 0, 0}, r_CM = bodyShape.r, sphereDiameter = 4^(1/3)*0.02, width = 1/10*bodyShape.sphereDiameter)  annotation(
     Placement(visible = true, transformation(origin = {-12, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
