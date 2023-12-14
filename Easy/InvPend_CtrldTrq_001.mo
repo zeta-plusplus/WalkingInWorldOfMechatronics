@@ -1,6 +1,6 @@
-within WalkingInWorldOfMechatronics.Temp;
+within WalkingInWorldOfMechatronics.Easy;
 
-model InvPendulum_Ctrld_001
+model InvPend_CtrldTrq_001
   extends Modelica.Icons.Example;
   inner Modelica.Mechanics.MultiBody.World world(animateGravity = false, animateGround = false) annotation(
     Placement(visible = true, transformation(origin = {-28, -76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -89,4 +89,4 @@ equation
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-09, Interval = 0.001),
     Diagram(graphics = {Text(origin = {56, 0}, extent = {{-16, 6}, {16, -6}}, textString = "Positive
  = clockwise", horizontalAlignment = TextAlignment.Left), Rectangle(origin = {-100, -1}, pattern = LinePattern.Dash, lineThickness = 0.5, extent = {{-96, 53}, {96, -53}}), Text(origin = {-162, 61}, extent = {{-28, 5}, {28, -5}}, textString = "control", horizontalAlignment = TextAlignment.Left), Text(origin = {48, 11}, extent = {{-34, 7}, {34, -7}}, textString = "Rotational Actuator", horizontalAlignment = TextAlignment.Left), Text(origin = {-42, 134}, extent = {{-48, 6}, {48, -6}}, textString = "Disturbance Force Input", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {160, 140}})));
-end InvPendulum_Ctrld_001;
+end InvPend_CtrldTrq_001;
