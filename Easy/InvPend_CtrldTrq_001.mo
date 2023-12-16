@@ -4,7 +4,7 @@ model InvPend_CtrldTrq_001
   extends Modelica.Icons.Example;
   inner Modelica.Mechanics.MultiBody.World world(animateGravity = false, animateGround = false) annotation(
     Placement(visible = true, transformation(origin = {-28, -76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(phi(displayUnit = "rad", fixed = true, start = 80*Modelica.Constants.pi/180), useAxisFlange = true) annotation(
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(phi(displayUnit = "rad", fixed = true, start = 60*Modelica.Constants.pi/180), useAxisFlange = true) annotation(
     Placement(visible = true, transformation(origin = {93, -59}, extent = {{-17, -17}, {17, 17}}, rotation = 90)));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(angles_start = {0.5235987755982988, 0, 0}, length = bodyShape.r[1], m = 1, r = {0.6, 0, 0}, r_CM = bodyShape.r, sphereDiameter = 4^(1/3)*0.06, width = 1/8*bodyShape.sphereDiameter) annotation(
     Placement(visible = true, transformation(origin = {93, 75}, extent = {{-17, -17}, {17, 17}}, rotation = 90)));
@@ -14,30 +14,38 @@ model InvPend_CtrldTrq_001
     Placement(visible = true, transformation(origin = {52, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sensors.RelAngleSensor relAngleSensor annotation(
     Placement(visible = true, transformation(origin = {31, -45}, extent = {{-7, 7}, {7, -7}}, rotation = 90)));
-  Modelica.Blocks.Sources.Ramp ramp_tgtAng(duration = 0, height = 0, offset = 90, startTime = 0) annotation(
+  Modelica.Blocks.Sources.Ramp ramp_tgtAng(duration = 0.1, height = 20, offset = 90, startTime = 15) annotation(
     Placement(visible = true, transformation(origin = {-174, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback annotation(
     Placement(visible = true, transformation(origin = {-122, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Math.Gain ctrl_P(k = 20) annotation(
+  Modelica.Blocks.Math.Gain ctrl_P(k = 30) annotation(
     Placement(visible = true, transformation(origin = {-67, 24}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Modelica.Blocks.Math.UnitConversions.From_deg from_deg annotation(
     Placement(visible = true, transformation(origin = {-145, 24}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Modelica.Blocks.Math.Sum sum1(nin = 3) annotation(
     Placement(visible = true, transformation(origin = {-35, 24}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  Modelica.Blocks.Continuous.Integrator ctrl_I(k = 0.001) annotation(
+  Modelica.Blocks.Continuous.Integrator ctrl_I(k = 40) annotation(
     Placement(visible = true, transformation(origin = {-67, -3}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Modelica.Blocks.Continuous.Der der1 annotation(
     Placement(visible = true, transformation(origin = {-89, -28}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  Modelica.Blocks.Math.Gain ctrl_D(k = 0.5) annotation(
+  Modelica.Blocks.Math.Gain ctrl_D(k = 1) annotation(
     Placement(visible = true, transformation(origin = {-67, -28}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force1(animation = false, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_resolve) annotation(
     Placement(visible = true, transformation(origin = {60, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Trapezoid trapezoid_distForce(amplitude = 300, falling = 0.001, nperiod = 1, offset = 0, period = 10, rising = 0.001, startTime = 7, width = 0.001) annotation(
-    Placement(visible = true, transformation(origin = {-34, 116}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  Modelica.Blocks.Sources.Trapezoid trapezoid_distForce(amplitude = 500, falling = 0.001, nperiod = 1, offset = 0, period = 10, rising = 0.001, startTime = 7, width = 0.001) annotation(
+    Placement(visible = true, transformation(origin = {-84, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const(k = 0) annotation(
-    Placement(visible = true, transformation(origin = {-33, 95}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-81, 93}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const1(k = 0) annotation(
-    Placement(visible = true, transformation(origin = {-33, 79}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-81, 77}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Forces.WorldForce force(animation = false, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_resolve) annotation(
+    Placement(visible = true, transformation(origin = {58, 168}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.Constant const2(k = 10) annotation(
+    Placement(visible = true, transformation(origin = {-65, 187}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
+  Modelica.Blocks.Sources.Constant const3(k = 0) annotation(
+    Placement(visible = true, transformation(origin = {-33, 177}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+  Modelica.Blocks.Sources.Constant const4(k = 0) annotation(
+    Placement(visible = true, transformation(origin = {-33, 159}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
 equation
   connect(world.frame_b, revolute.frame_a) annotation(
     Line(points = {{-18, -76}, {93, -76}}, thickness = 1));
@@ -78,15 +86,25 @@ equation
   connect(force1.frame_b, bodyShape.frame_b) annotation(
     Line(points = {{70, 92}, {94, 92}}));
   connect(trapezoid_distForce.y, force1.force[1]) annotation(
-    Line(points = {{-25, 116}, {-6.3, 116}, {-6.3, 92}, {48, 92}}, color = {0, 0, 127}));
+    Line(points = {{-73, 118}, {-6.3, 118}, {-6.3, 92}, {48, 92}}, color = {0, 0, 127}));
   connect(const.y, force1.force[2]) annotation(
-    Line(points = {{-27.5, 95}, {-10.9, 95}, {-10.9, 92}, {48, 92}}, color = {0, 0, 127}));
+    Line(points = {{-75.5, 93}, {-10.9, 93}, {-10.9, 92}, {48, 92}}, color = {0, 0, 127}));
   connect(const1.y, force1.force[3]) annotation(
-    Line(points = {{-27.5, 79}, {-16.4, 79}, {-16.4, 92}, {48, 92}}, color = {0, 0, 127}));
+    Line(points = {{-75.5, 77}, {-16.4, 77}, {-16.4, 92}, {48, 92}}, color = {0, 0, 127}));
   connect(force1.frame_resolve, world.frame_b) annotation(
     Line(points = {{60, 82}, {6, 82}, {6, -76}, {-18, -76}}, pattern = LinePattern.Dash));
+  connect(force.frame_resolve, world.frame_b) annotation(
+    Line(points = {{58, 158}, {6, 158}, {6, -76}, {-18, -76}}, pattern = LinePattern.Dash));
+  connect(force.frame_b, bodyShape.frame_b) annotation(
+    Line(points = {{68, 168}, {76, 168}, {76, 92}, {94, 92}}, color = {95, 95, 95}));
+  connect(const2.y, force.force[1]) annotation(
+    Line(points = {{-55, 187}, {18, 187}, {18, 168}, {46, 168}}, color = {0, 0, 127}));
+  connect(const3.y, force.force[2]) annotation(
+    Line(points = {{-27.5, 177}, {14, 177}, {14, 168}, {46, 168}}, color = {0, 0, 127}));
+  connect(const4.y, force.force[3]) annotation(
+    Line(points = {{-27.5, 159}, {-12, 159}, {-12, 168}, {46, 168}}, color = {0, 0, 127}));
   annotation(
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-09, Interval = 0.001),
     Diagram(graphics = {Text(origin = {56, 0}, extent = {{-16, 6}, {16, -6}}, textString = "Positive
- = clockwise", horizontalAlignment = TextAlignment.Left), Rectangle(origin = {-100, -1}, pattern = LinePattern.Dash, lineThickness = 0.5, extent = {{-96, 53}, {96, -53}}), Text(origin = {-162, 61}, extent = {{-28, 5}, {28, -5}}, textString = "control", horizontalAlignment = TextAlignment.Left), Text(origin = {48, 11}, extent = {{-34, 7}, {34, -7}}, textString = "Rotational Actuator", horizontalAlignment = TextAlignment.Left), Text(origin = {-42, 134}, extent = {{-48, 6}, {48, -6}}, textString = "Disturbance Force Input", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {160, 140}})));
+ = clockwise", horizontalAlignment = TextAlignment.Left), Rectangle(origin = {-100, -1}, pattern = LinePattern.Dash, lineThickness = 0.5, extent = {{-96, 53}, {96, -53}}), Text(origin = {-162, 61}, extent = {{-28, 5}, {28, -5}}, textString = "control", horizontalAlignment = TextAlignment.Left), Text(origin = {48, 11}, extent = {{-34, 7}, {34, -7}}, textString = "Rotational Actuator", horizontalAlignment = TextAlignment.Left), Text(origin = {-92, 140}, extent = {{-48, 6}, {48, -6}}, textString = "Input Disturbance Force", horizontalAlignment = TextAlignment.Left), Text(origin = {-48, 206}, extent = {{-48, 6}, {48, -6}}, textString = "Constant disturbance force", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {160, 220}})));
 end InvPend_CtrldTrq_001;
