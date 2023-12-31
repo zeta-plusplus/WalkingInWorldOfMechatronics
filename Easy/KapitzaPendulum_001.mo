@@ -99,5 +99,6 @@ equation
 (such as hit by hammer)", horizontalAlignment = TextAlignment.Left), Text(origin = {-86, 204}, extent = {{-60, 10}, {60, -10}}, textString = "Semi-Constant disturbance force
 (such as wind)", horizontalAlignment = TextAlignment.Left), Text(origin = {150, -29}, extent = {{-42, 19}, {42, -19}}, textString = "move the hinge of 
 pendulum in y-direction", horizontalAlignment = TextAlignment.Left), Text(origin = {-92, -15}, extent = {{-38, 13}, {38, -13}}, textString = "Forced vibration", horizontalAlignment = TextAlignment.Left), Text(origin = {150, -29}, extent = {{-42, 19}, {42, -19}}, textString = "move the hinge of 
-pendulum in y-direction", horizontalAlignment = TextAlignment.Left), Text(origin = {27, 27}, extent = {{-37, 7}, {37, -7}}, textString = "friction dumping", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {200, 220}})));
+pendulum in y-direction", horizontalAlignment = TextAlignment.Left), Text(origin = {26, 29}, extent = {{-38, 9}, {38, -9}}, textString = "friction dumping
+in rotation", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {200, 220}})));
 end KapitzaPendulum_001;
