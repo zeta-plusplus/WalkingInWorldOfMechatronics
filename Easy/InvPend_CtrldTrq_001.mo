@@ -31,7 +31,7 @@ model InvPend_CtrldTrq_001
   Modelica.Blocks.Math.Gain ctrl_D(k = 1) annotation(
     Placement(visible = true, transformation(origin = {-67, -28}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force1(animation = false, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.world) annotation(
-    Placement(visible = true, transformation(origin = {36, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {36, 92}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Trapezoid trapezoid_distForce(amplitude = 50, falling = 0.001, nperiod = 1, offset = 0, period = 10, rising = 0.001, startTime = 7, width = 0.02) annotation(
     Placement(visible = true, transformation(origin = {-84, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const(k = 0) annotation(

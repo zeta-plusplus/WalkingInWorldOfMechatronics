@@ -1,0 +1,19 @@
+within WalkingInWorldOfMechatronics.Trival;
+
+model DiscAltitude_test01
+  extends Modelica.Icons.Example;
+  inner Modelica.Mechanics.MultiBody.World world(animateGround = true, groundColor = {130, 200, 130}, groundLength_u = 4, label2 = "z", n = {0, 0, -1}) annotation(
+    Placement(transformation(origin = {64, 2}, extent = {{-60, 0}, {-40, 20}})));
+  Modelica.Mechanics.MultiBody.Parts.BodyCylinder Wheel(diameter = 3, length = 0.1, r = {0, 0.1, 0}, r_0(start = {0, 0, 0.5}, each fixed = true), w_0_fixed = false, w_0_start = {0, 10, 0}) annotation(
+    Placement(transformation(origin = {70, 54}, extent = {{10, -10}, {-10, 10}})));
+  DiscAltitude discAltitude annotation(
+    Placement(transformation(origin = {40, 38}, extent = {{-10, -10}, {10, 10}})));
+equation
+  connect(Wheel.frame_b, discAltitude.frame_a) annotation(
+    Line(points = {{60, 54}, {30, 54}, {30, 38}}, color = {95, 95, 95}));
+
+annotation(
+    Diagram(coordinateSystem(extent = {{0, 60}, {80, 0}})),
+  experiment(StartTime = 0, StopTime = 5, Tolerance = 1e-06, Interval = 0.002),
+  __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "dassl", variableFilter = ".*"));
+end DiscAltitude_test01;

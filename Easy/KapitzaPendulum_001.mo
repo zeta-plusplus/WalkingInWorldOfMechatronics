@@ -53,14 +53,10 @@ equation
     Line(points = {{-119.5, 91}, {-54.9, 91}, {-54.9, 90}, {-20, 90}}, color = {0, 0, 127}, pattern = LinePattern.Dash));
   connect(const1.y, force1.force[3]) annotation(
     Line(points = {{-119.5, 75}, {-60.4, 75}, {-60.4, 90}, {-20, 90}}, color = {0, 0, 127}, pattern = LinePattern.Dash));
-  connect(force1.frame_resolve, world.frame_b) annotation(
-    Line(points = {{-8, 80}, {-38, 80}, {-38, -78}, {-48, -78}}, pattern = LinePattern.Dash));
   connect(const3.y, force.force[2]) annotation(
     Line(points = {{-71.5, 169}, {-30, 169}, {-30, 160}, {2, 160}}, color = {0, 0, 127}, pattern = LinePattern.Dash));
   connect(const4.y, force.force[3]) annotation(
     Line(points = {{-71.5, 151}, {-56, 151}, {-56, 160}, {2, 160}}, color = {0, 0, 127}, pattern = LinePattern.Dash));
-  connect(force.frame_resolve, world.frame_b) annotation(
-    Line(points = {{14, 150}, {-38, 150}, {-38, -78}, {-48, -78}}, color = {95, 95, 95}, pattern = LinePattern.Dash));
   connect(force.frame_b, cutForce.frame_a) annotation(
     Line(points = {{24, 160}, {34, 160}, {34, 138}}, color = {95, 95, 95}, thickness = 0.5));
   connect(force1.frame_b, cutForce1.frame_a) annotation(
